@@ -16,9 +16,26 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+
+        /* Style for the warning button */
+        #warning-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 40px;
+            background-color: red;
+            color: white;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000; /* Make sure the button is above the background */
+        }
     </style>
 </head>
 <body>
+
+    <button id="warning-button">WARNING CLICK HERE</button>
 
     <script>
         // Array of background images
@@ -34,7 +51,7 @@
             document.body.style.backgroundImage = `url(${images[randomIndex]})`;
         }
 
-        // Function to open the website in fullscreen automatically
+        // Function to open the website in fullscreen
         function openFullscreen() {
             let elem = document.documentElement;
             if (elem.requestFullscreen) {
@@ -48,10 +65,15 @@
             }
         }
 
-        // When the page loads, set a random background and open fullscreen
+        // When the page loads, show the button and set a random background
         document.addEventListener("DOMContentLoaded", () => {
             setRandomBackground();
-            openFullscreen();
+
+            // Add click event to the button
+            document.getElementById("warning-button").addEventListener("click", () => {
+                openFullscreen();
+                document.getElementById("warning-button").style.display = 'none'; // Hide the button
+            });
         });
     </script>
 </body>
