@@ -15,6 +15,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            transition: background-image 0.5s ease; /* Smooth transition for background */
         }
 
         /* Style for the warning button */
@@ -65,12 +66,13 @@
             }
         }
 
-        // When the page loads, show the button and set a random background
+        // When the page loads, hide the background and show the button
         document.addEventListener("DOMContentLoaded", () => {
-            setRandomBackground();
+            document.body.style.backgroundImage = ''; // Initially hide background
 
             // Add click event to the button
             document.getElementById("warning-button").addEventListener("click", () => {
+                setRandomBackground(); // Set background when button is clicked
                 openFullscreen();
                 document.getElementById("warning-button").style.display = 'none'; // Hide the button
             });
