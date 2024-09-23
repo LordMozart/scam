@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullscreen Website with Random Background Image</title>
+    <style>
+        /* Style for background image to cover the full screen */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // Array of background images
+        const images = [
+            'image1.jpg',
+            'image2.jpg',
+            'image3.jpg'
+        ];
+
+        // Function to set a random background image
+        function setRandomBackground() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            document.body.style.backgroundImage = `url(${images[randomIndex]})`;
+        }
+
+        // Function to open the website in fullscreen automatically
+        function openFullscreen() {
+            let elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { // IE/Edge
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // When the page loads, set a random background and open fullscreen
+        document.addEventListener("DOMContentLoaded", () => {
+            setRandomBackground();
+            openFullscreen();
+        });
+    </script>
+</body>
+</html>
