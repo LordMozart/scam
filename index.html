@@ -16,14 +16,14 @@
             background-position: center;
             background-repeat: no-repeat;
             transition: background-image 0.5s ease; /* Smooth transition for background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Center items vertically and horizontally */
         }
 
         /* Style for the warning button */
         #warning-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             padding: 20px 40px;
             background-color: red;
             color: white;
@@ -31,11 +31,27 @@
             font-size: 24px;
             cursor: pointer;
             z-index: 1000; /* Make sure the button is above the background */
+            margin-top: 20px; /* Space between image and button */
+        }
+
+        /* Style for the image */
+        #info-image {
+            max-width: 80%; /* Adjust image size as needed */
+            height: auto;
+        }
+
+        /* Style for the text */
+        #info-text {
+            font-size: 20px;
+            color: white; /* Change text color as needed */
+            margin-top: 10px; /* Space between text and button */
         }
     </style>
 </head>
 <body>
 
+    <img id="info-image" src="warning.jpg" alt="Warning Image">
+    <div id="info-text">Your pc is infected with VERY BAD MALWATE!</div>
     <button id="warning-button">WARNING CLICK HERE</button>
 
     <script>
@@ -75,6 +91,8 @@
                 setRandomBackground(); // Set background when button is clicked
                 openFullscreen();
                 document.getElementById("warning-button").style.display = 'none'; // Hide the button
+                document.getElementById("info-image").style.display = 'none'; // Hide the image
+                document.getElementById("info-text").style.display = 'none'; // Hide the text
             });
         });
     </script>
